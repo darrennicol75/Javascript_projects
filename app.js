@@ -169,12 +169,16 @@ val = list.childElementCount;
 val = listItem.parentNode; 
 val = listItem.parentElement; 
 val = listItem.parentElement.parentElement; 
-*/
+
 // get next sibling
 val = listItem.previousSibling;
 val = listItem.nextElementSibling.nextElementSibling;
 
 console.log(val); 
+*/
+
+// WEDNESDAY 10/03/21 
+// GIT TEST
 
 
 
