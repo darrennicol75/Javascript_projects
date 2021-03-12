@@ -183,7 +183,7 @@ console.log(val);
 // THURSDAY11/03/21- Lecture 27
 
 // create element
-
+/*
 const li = document.createElement('li'); 
 
 // add class 
@@ -214,6 +214,168 @@ li.appendChild(link);
 document.querySelector('ul.collection').appendChild(li);
 
 console.log(li);
+*/
+
+// LECTURE 28
+// REMOVING AND REPLACING ELEMENTS 
+
+// Replace H5 with H2 
+/*
+const newHeading = document.createElement('h2'); 
+//add title
+newHeading.id = 'task-title'; 
+// new text node
+newHeading.appendChild(document.createTextNode('Task List'));
+// Get heading you want to replace
+const oldHeading = document.getElementById('task-title');
+// Find parent
+const cardAction = document.querySelector('.card-action'); 
+//Replace 
+cardAction.replaceChild(newHeading, oldHeading); // add what you want to replace and what with
+
+// REMOVE ELEMENT 
+
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul'); 
+
+//Remove list item 
+lis[0].remove();
+
+// Remove child element 
+list.removeChild(lis[3]);
+
+// Classes and attributes 
+const firstLi = document.querySelector('li:first-child');
+const link = firstLi.children[0]; 
+
+let val; 
+//CLASSES 
+val = link.className; 
+val = link.classList; 
+val = link.classList[0];
+link.classList.add('test'); 
+link.classList.remove('test'); 
+val = link; 
+
+//ATTRIBUTES 
+val = link.getAttribute('href'); 
+val = link.setAttribute('href', 'https://www.google.co.uk/');
+
+link.setAttribute('title', 'Google');
+
+val = link.hasAttribute('title');
+link.removeAttribute('title')
+val = link
+
+console.log(val);
+*/
+
+// LECTURE 29 
+// EVENT LISTENERS AND THE EVENT OBJECT
+// LISTEN FOR ANYTHIING ON THE DOM 
+/*
+document.querySelector('.clear-tasks').addEventListener('click', function(e){
+  console.log('Hello World!')
+  //e.preventDefault();
+}); 
+
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
+
+function onClick(e){
+  //console.log('Clicked');
+
+  let val; 
+  val = e; 
+
+  // event target element 
+  val = e.target;
+  val = e.target.id;
+  val = e.target.className; 
+  val = e.target.classList;
+
+  // e.target.innerText = 'Hello';
+
+  // EVENT TYPE 
+
+  val = e.type; 
+
+  // TIMESTAMP 
+  val = e.timestamp; 
+  // Coords of event relative to window 
+  val = e.clientY; //Where on the button its clicked y-axis
+  //can also be x-axis
+
+  // lots of different events
+  console.log(val);
+}
+
+*/
+
+// MOUSE EVENTS 
+
+const clearBtn = document.querySelector('.clear-tasks');
+const card = document.querySelector('.card'); 
+const heading = document.querySelector('h5');
+
+//Click
+
+clearBtn.addEventListener('click', runEvent);
+
+// Double Click
+//clearBtn.addEventListener('dblclick', runEvent);
+//Mouse events
+/*clearBtn.addEventListener('mousedown', runEvent);
+clearBtn.addEventListener('mouseup', runEvent);
+
+card.addEventListener('mouseenter', runEvent);
+card.addEventListener('mouseleave', runEvent);
+card.addEventListener('mouseover', runEvent);
+card.addEventListener('mouseout', runEvent);
+*/ 
+
+card.addEventListener('mousemove', runEvent);
+
+//Event handler 
+
+function runEvent(e) {
+  console.log(`EVENT TYPE: ${e.type}`);
+
+  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+
+  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+}
+
+// keyboard events 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
