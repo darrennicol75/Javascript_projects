@@ -392,12 +392,76 @@ function runEvent(e){
 }
 */
 
+// LECTURE 32 
+// BUBBLING (on child and bubbles up)
+/*
+document.querySelector('.card-title').addEventListener('click', function(){
+  console.log('card-title');
+});
 
+document.querySelector('.card-content').addEventListener('click', function(){
+  console.log('card.title'); 
+});
 
+document.querySelector('.card').addEventListener('click', function(){
+  console.log('card'); 
+});
 
+document.querySelector('.col').addEventListener('click', function(){
+  console.log('col'); 
+});
+*/
+// DELEGATION (on parent and moves down through children)
+/*
+const delItem = document.querySelector('.delete-item');
 
+delItem.addEventListener('click', deleteItem); 
+*/
+/*
+document.body.addEventListener('click', deleteItem);
+/*
+function deleteItem(e){
+  console.log(e.target);
+  if(e.target.parentElement.className === 'delete-item secondary-content'){
+    console.log('delete item');
+  }
+}
+*/
+// the above only deletes the first one not others so delegation is required. 
+/*
+function deleteItem(e){
+  console.log(e.target);
+  if(e.target.parentElement.classList.contains('delete-item')){
+    console.log('delete item');
+    e.target.parentElement.parentElement.remove(); 
+  }
+}
+// add conditional and then parentElements to move between levels. 
+*/
 
+// LECTURE 33- LOCAL AND SESSION STORAGE 
 
+// set local storage item 
+/*
+localStorage.setItem('name', 'Johnny'); //saves in local storage, does stay after browser is closed
+localStorage.setItem('age', '30');
+// set session storage item 
+sessionStorage.setItem('name', 'Mary'); // does not stay after browser is closed. 
+// remove from storage 
+//localStorage.removeItem('name');
+// get from storage 
+const firstName = localStorage.getItem('name');
+const age = localStorage.getItem('age');
+// clear local storage
+// localStorage.clear(); 
+console.log(firstName, age);
+*/
+document.querySelector('form').addEventListener('sumbit', function(e){
+  const task = document.getElementById('task').value; 
+  localStorage.setItem('task', task);
+  alert('Task saved');
+  e.preventDefault();
+});
 
 
 
