@@ -312,7 +312,7 @@ function onClick(e){
 */
 
 // MOUSE EVENTS 
-
+/*
 const clearBtn = document.querySelector('.clear-tasks');
 const card = document.querySelector('.card'); 
 const heading = document.querySelector('h5');
@@ -320,7 +320,7 @@ const heading = document.querySelector('h5');
 //Click
 
 clearBtn.addEventListener('click', runEvent);
-
+*/
 // Double Click
 //clearBtn.addEventListener('dblclick', runEvent);
 //Mouse events
@@ -332,7 +332,7 @@ card.addEventListener('mouseleave', runEvent);
 card.addEventListener('mouseover', runEvent);
 card.addEventListener('mouseout', runEvent);
 */ 
-
+/*
 card.addEventListener('mousemove', runEvent);
 
 //Event handler 
@@ -344,16 +344,146 @@ function runEvent(e) {
 
   document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
 }
-
+*/
 // keyboard events 
+/*
+const form = document.querySelector('form'); 
+// if large application with more than one form use id or element
+const taskInput = document.getElementById('task');
+const heading = document.querySelector('h5');
+const select = document.querySelector('select');
+
+taskInput.value = ''; // clear input
+
+//form.addEventListener('submit', runEvent);
+
+// keydown
+//taskInput.addEventListener('keydown', runEvent);
+
+// keyup
+//taskInput.addEventListener('keyup', runEvent);
+
+// keypress
+//taskInput.addEventListener('keypress', runEvent);
+//Focus
+//taskInput.addEventListener('focus', runEvent);
+//Blur
+//taskInput.addEventListener('blur', runEvent);
+//Cut
+//taskInput.addEventListener('cut', runEvent);
+//Paste
+//taskInput.addEventListener('paste', runEvent);
+//Input event 
+//taskInput.addEventListener('input', runEvent); //  comment out line html line 8 
+//change
+select.addEventListener('change', runEvent); 
 
 
 
+function runEvent(e){
+  console.log(`EVENT TYPE: ${e.type}`);
+  // get input value
+  //console.log(taskInput.value);
+  //e.preventDefault();
+  console.log(e.target.value);
+
+  // heading.innerText = e.target.value;
+
+}
+*/
+
+// LECTURE 32 
+// BUBBLING (on child and bubbles up)
+/*
+document.querySelector('.card-title').addEventListener('click', function(){
+  console.log('card-title');
+});
+
+document.querySelector('.card-content').addEventListener('click', function(){
+  console.log('card.title'); 
+});
+
+document.querySelector('.card').addEventListener('click', function(){
+  console.log('card'); 
+});
+
+document.querySelector('.col').addEventListener('click', function(){
+  console.log('col'); 
+});
+*/
+// DELEGATION (on parent and moves down through children)
+/*
+const delItem = document.querySelector('.delete-item');
+
+delItem.addEventListener('click', deleteItem); 
+*/
+/*
+document.body.addEventListener('click', deleteItem);
+/*
+function deleteItem(e){
+  console.log(e.target);
+  if(e.target.parentElement.className === 'delete-item secondary-content'){
+    console.log('delete item');
+  }
+}
+*/
+// the above only deletes the first one not others so delegation is required. 
+/*
+function deleteItem(e){
+  console.log(e.target);
+  if(e.target.parentElement.classList.contains('delete-item')){
+    console.log('delete item');
+    e.target.parentElement.parentElement.remove(); 
+  }
+}
+// add conditional and then parentElements to move between levels. 
+*/
+
+// LECTURE 33- LOCAL AND SESSION STORAGE 
+
+// set local storage item 
+/*
+localStorage.setItem('name', 'Johnny'); //saves in local storage, does stay after browser is closed
+localStorage.setItem('age', '30');
+// set session storage item 
+sessionStorage.setItem('name', 'Mary'); // does not stay after browser is closed. 
+// remove from storage 
+//localStorage.removeItem('name');
+// get from storage 
+const firstName = localStorage.getItem('name');
+const age = localStorage.getItem('age');
+// clear local storage
+// localStorage.clear(); 
+console.log(firstName, age);
+
+document.querySelector('form').addEventListener('submit', 
+function(e){
+  const task = document.getElementById('task').value; 
+
+  let tasks; 
+
+  if(localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 
 
+  alert('Task saved');
 
+  e.preventDefault();
+});
 
+const tasks = JSON.parse(localStorage.getItem('tasks'));
 
+tasks.forEach(function(task){
+  console.log(task);
+})
+*/
 
 
 
