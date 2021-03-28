@@ -15,7 +15,7 @@ UI.prototype.addBookToList = function(book){
     const list = document.getElementById('book-list');
     // create a table row element 
     const row = document.createElement('tr'); 
-    // Insert cols 
+    // Insert cols- insert info in this format/structure 
     row.innerHTML = `
     <td>${book.title}</td>
     <td>${book.author}</td>
@@ -45,6 +45,16 @@ UI.prototype.showAlert = function(message, className){
     }, 3000);
 }
 
+// delete book usinig prototype- we need to target the x 
+// but we gain access to that via the <td> and the <tr> traverse up two levels 
+
+UI.prototype.deleteBook = function(target) {
+    if(target.className === 'delete') {
+        target.parentElement.parentElement.remove();
+    }
+} 
+
+
 // create clear fields 
 
 UI.prototype.clearFields = function(){
@@ -53,7 +63,7 @@ UI.prototype.clearFields = function(){
     document.getElementById('isbn').value = '';
 }
 
-// Event listeners 
+// Event listeners for add
 
 document.getElementById('book-form').addEventListener('submit', function(e){  
     // On event we want to grab the values from the form
@@ -84,3 +94,22 @@ document.getElementById('book-form').addEventListener('submit', function(e){
 
     e.preventDefault();
 });
+
+// Event lisitener for delete 
+// first target the list which is 'book-list'
+
+document.getElementById('book-list').addEventListener('click', function(e){
+    
+    const ui = new UI();
+
+    ui.deleteBook(e.target); 
+    // show message 
+    ui.showAlert('Book removed', 'success');
+
+    e.preventDefault();
+});
+
+// const ui = new UI();
+
+// console.log(ui);
+
