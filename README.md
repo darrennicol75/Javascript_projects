@@ -9,3 +9,5 @@ Project 2- loan calculator using bootstrap.
 Project 3- number guesser
 
 Project 4- book list
+
+Project 5- chuck norris project using AJAX and API requests
